@@ -2,15 +2,17 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include <climits>
 #include <string>
 #include <map> 
 using namespace std;
 
 
+
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-    	if(strs.size() == 0) return "";
+        if(strs.size() == 0) return "";
         int maxLen = INT_MIN, minLen = INT_MAX, num = 0, i, j;   // num用来保存相同的字符个数
         for(int i = 0; i < strs.size(); i++){
             if(strs[i].size() > maxLen) maxLen = strs[i].size();
@@ -20,11 +22,11 @@ public:
         for(i = 0; i < minLen; i++){
             for(j = 0; j < strs.size(); j++){
                 if(strs[0][i] != strs[j][i]){
-                	return strs[0].substr(0, num);
+                    return strs[0].substr(0, num);
                 }
                 if(j == strs.size() - 1){
                     num += 1;
-               	}
+                }
                 
 
             }
@@ -42,7 +44,7 @@ int main() {
 	Solution sl;
 	vector<string> strs {"flower","flow","flight"};
 	vector<string> strs1 {"aca","cba"};
-	cout<<sl.longestCommonPrefix(strs1)<<endl;
+	cout<<sl.longestCommonPrefix(strs)<<endl;
 //	cout<<sl.intToRoman(1994)<<endl;
 	return 0;
 }

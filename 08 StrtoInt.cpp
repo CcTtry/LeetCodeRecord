@@ -1,3 +1,14 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include <climits>
+#include <string>
+#include <map> 
+#include <climits>
+using namespace std;
+
+
 class Solution {
 public:
     int strToInt(string str) {

@@ -1,3 +1,11 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include <climits>
+#include <string>
+#include <map> 
+using namespace std;
 class Solution {
 public:
 	int getValue(char c){

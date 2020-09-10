@@ -64,7 +64,7 @@ public:
 };
 
 void print(ListNode * head)
-{//′òó?
+{//
 	if (head == NULL)
 	{
 		return;
