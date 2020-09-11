@@ -24,7 +24,6 @@ public:
 			}
 		}
 		return (index - 1);
-
 	}
     string getPermutation(int n, int k) {
 		string str;  // 不可以直接赋值  
@@ -48,10 +47,7 @@ public:
         	str  += cur + '0';
         	
         }
-        
-
         return str;
-
     }
 };
 int main(){

@@ -62,22 +62,7 @@ public:
         return newNode.next;
     }
 };
-
-void print(ListNode * head)
-{//
-	if (head == NULL)
-	{
-		return;
-	}
-	ListNode * p = head;
-	while (p->next != NULL)
-	{
-		cout<<p->val<<"->";
-		p = p->next;
-	}
-
-	cout<<p->val<<endl;
-}
+ 
 int main(){
 	ListNode *p1 = new ListNode(1);
 	ListNode *p2 = new ListNode(2);
