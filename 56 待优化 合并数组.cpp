@@ -56,17 +56,18 @@ public:
 
     //  先排序， 采用一个一个合并的方式进行操作
     
+    ector<vector<int>> res;
     bool ifMerge(vector<int>& a, vector<int>& b) {   // 能否合并
         vector<int> temp(2);
         //printf("[%d, %d]  和 [%d, %d] 合并\n", a[0], a[1], b[0], b[1]);
         temp[0] = min(a[0], b[0]);
         temp[1] = max(a[1], b[1]);
         if ((a[1] >= b[0] && a[1] <= b[1]) || b[1] >= a[0] && b[1] <= a[1]) {
-            printf("[%d, %d]  和 [%d, %d] 合并成  [%d, %d]\n", a[0], a[1], b[0], b[1], temp[0], temp[1]);
+            //printf("[%d, %d]  和 [%d, %d] 合并成  [%d, %d]\n", a[0], a[1], b[0], b[1], temp[0], temp[1]);
             return true;  //相交合并
         }
         else if ((a[0] <= b[0] && a[1] >= b[1]) || (b[0] <= a[0] && b[1] >= a[1])) {
-            // printf("[%d, %d]  和 [%d, %d] 合并成  [%d, %d]\n", a[0], a[1], b[0], b[1], temp[0], temp[1]);
+            //printf("[%d, %d]  和 [%d, %d] 合并成  [%d, %d]\n", a[0], a[1], b[0], b[1], temp[0], temp[1]);
             return true;
         }
         return false;
@@ -77,9 +78,10 @@ public:
         //printf("[%d, %d]  和 [%d, %d] 合并\n", a[0], a[1], b[0], b[1]);
         temp[0] = min(a[0], b[0]);
         temp[1] = max(a[1], b[1]);
-        // printf("合并 [%d, %d]  和 [%d, %d] 合并成  [%d, %d]\n", a[0], a[1], b[0], b[1], temp[0], temp[1]);
+        //printf("合并 [%d, %d]  和 [%d, %d] 合并成  [%d, %d]\n", a[0], a[1], b[0], b[1], temp[0], temp[1]);
         return temp;
     }
+    
     // O(n^2) 的算法复杂度  分治法
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         if (intervals.size() == 0) return res;
@@ -89,15 +91,11 @@ public:
         const int n = intervals.size();
         sort(intervals.begin(), intervals.end());
         res.push_back(intervals[0]);
-
         int i = 0;
         for (int j = i + 1; j < intervals.size(); j++) {
             if (ifMerge(res[i], intervals[j])) {
-                vector<int> a = res[i];
-                vector<int> b = intervals[j];
-                res.erase(res.begin()+i);
-                res.insert(res.begin() + i, mergeTwo(a, b));
-
+                res[i][0] = min(res[i][0], intervals[j][0]);
+                res[i][1] = max(res[i][1], intervals[j][1]);
             }
             else {
                 i = i + 1;
