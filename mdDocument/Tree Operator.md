@@ -4,7 +4,6 @@
 层次遍历代码
 
 ```C++
-
 // Definition for a Node.
 class Node {
 public:
